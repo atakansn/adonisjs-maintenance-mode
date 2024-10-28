@@ -1,0 +1,29 @@
+{{#var middlewareName = generators.middlewareName(entity.name)}}
+{{#var middlewareFileName = generators.middlewareFileName(entity.name)}}
+{{{
+  exports({ to: app.middlewarePath(entity.path, middlewareFileName) })
+}}}
+
+import EnsureMaintenanceMode from 'adonisjs-maintenance-mode/ensure_maintenance_mode'
+
+/**
+ * {{ middlewareName }} class extends the functionality of
+ * EnsureMaintenanceMode to block requests during maintenance mode,
+ * while allowing the specification of certain URLs to be excluded.
+ *
+ * @class
+ * @extends EnsureMaintenanceMode
+ *
+ * @property {string[]} excludedUrls - An array of URL strings that are excluded from blocking
+ * requests during maintenance mode.
+ */
+export default class {{ middlewareName }} extends EnsureMaintenanceMode {
+  /**
+   * An array of URL paths that should be excluded from being blocked during maintenance mode.
+   * Requests to these URLs will bypass the maintenance check.
+   *
+   * @protected
+   * @type {string[]}
+   */
+  protected excludedUrls: string[] = []
+}
