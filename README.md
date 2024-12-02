@@ -88,13 +88,6 @@ protected statusPages: Record<StatusPageRange, StatusPageRenderer> = {
 ### !! Note on command --template option !!
 If you enable maintenance mode with the `--template` option (e.g., node ace maintenance:on --template=path_to_template), the template specified will automatically be used for the 503 error response, making manual changes in `handler.ts` unnecessary. This provides flexibility for setting custom templates dynamically without requiring code modifications.
 
-## Deactivating Maintenance Mode
-Turn off maintenance mode using the following command:
-
-```bash
-node ace maintenance:off
-```
-
 This command removes the `maintenance_mode_on` file from the `tmp/` directory.
 ## Deactivating Maintenance Mode
 Turn off maintenance mode using the following command:
